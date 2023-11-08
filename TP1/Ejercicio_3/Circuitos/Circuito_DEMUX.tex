@@ -1,0 +1,96 @@
+\input{Config.tex}
+
+%\documentclass{standalone}
+%\usepackage{circuitikz}
+
+\begin{document}
+
+ 
+ \begin{circuitikz}[scale=1]
+ 
+\draw (0,2) node[american and port,number inputs=3] (myand1) {}
+(myand1.out)  node      [anchor=south west,xshift=1cm]             {\it $D=IS_1S_0$}
+ 
+(0,4) node[american and port,number inputs=3] (myand2) {}
+(myand2.out)  node      [anchor=south west,xshift=1cm]         {\it $C=IS_1\bar{S_0}$}
+
+
+(0,6) node[american and port,number inputs=3] (myand3) {}
+(myand3.out)  node      [anchor=south west,xshift=1cm]         {\it $B=I\bar{S_1}S_0$}
+
+(0,8) node[american and port,number inputs=3] (myand4) {}
+(myand4.out)  node      [anchor=south west,xshift=1cm]         {\it $A=I\bar{S_1}\bar{S_0}$}
+
+(-4,4) node[american not port, scale=0.5] (mynot1) {}
+(mynot1.out)  node      [anchor=south west,xshift=-0.4cm]         {$\bar{S_1}$}
+
+(-4,6) node[american not port, scale=0.5] (mynot2) {}
+(mynot2.out)  node      [anchor=south west,xshift=-0.4cm]         {$\bar{S_0}$}
+
+(0,2) -- (2,2)
+(0,4) -- (2,4)
+(0,6) -- (2,6)
+(0,8) -- (2,8)
+
+(myand4.in 1) node (I1)     [anchor=east,xshift=-4.75cm]           {I}
+(mynot2.in) node (S0)     [anchor=east,xshift=-1.75cm]           {$S_0$}
+(mynot1.in) node (S1)     [anchor=east,xshift=-1.75cm]           {$S_1$}
+
+(I1) -- (myand4.in 1)
+(S1) -- (mynot1.in)
+(S0) -- (mynot2.in)
+(mynot2.out) -- (-3,6)
+(mynot1.out) -- (-2.5,4)
+
+(-2.5,6) -- (myand3.in 2) 
+
+(-2,2.375) -- (-2,8.375)
+(-2,6.375) -- (myand3.in 1)
+(-2,4.375) -- (myand2.in 1)
+(-2,2.375) -- (myand1.in 1)
+
+(-3,6) -- (-3,8)
+(-3,8) -- (myand4.in 2)
+
+(-2.5,4) -- (-2.5,7.625)
+(-2.5,7.625) -- (myand4.in 3)
+
+(-1.75,4) -- (-1.75,8)
+(-1.75,4) -- (myand2.in 2)
+
+
+(-1.75,8) node[circ]{}
+(-2.25,5.625) node[circ]{}
+(-2.5,6) node[circ]{}
+(-2,6.375) node[circ]{}
+(-2,4.375) node[circ]{}
+(-3,6) node[circ]{}
+(-5,4) node[circ]{}
+(-5,6) node[circ]{}
+(-2.75,3.625) node[circ]{}
+
+
+(-2,8.375) node[circ]{}
+
+(-5,4) -- (-5,3.625)
+(-5,5.625) -- (myand3.in 3)
+
+
+(-2.75,3.625) -- (-2.75,1.625)
+(-2.75,1.625) -- (myand1.in 3)
+
+
+(-5,6) -- (-5,5.625)
+%(-5,5.625) -- (-2.25,5.5)
+(-2.25,5.625) -- (-2.25,2)
+(-2.25,2) -- (myand1.in 2)
+
+(-5,3.625) -- (myand2.in 3)
+;
+
+
+
+;\end{circuitikz}
+
+
+ \end{document}
